@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Forecasting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            min-height: 100vh;
+            background-color: #e9ecef; /* Light gray background color */
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            background: #ffffff; /* White background for the main container */
+            border-radius: 12px; /* Rounded corners for the main container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for the container */
+        }
+        .header-container {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to right, #ffffff, #f8f9fa); /* Gradient background for header */
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .header-container h1 {
+            margin: 0;
+            font-size: 28px; /* Slightly larger heading */
+            color: #343a40; /* Darker text color */
+        }
+        .header-container p {
+            margin: 10px 0 0;
+            font-size: 18px;
+            color: #495057; /* Medium gray text color */
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            align-items: flex-start; /* Align items at the start of the container */
+            justify-content: center;
+        }
+        .image-container {
+            flex: 3;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa); /* Gradient background for image container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-right: 2px solid #ced4da;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .form-container {
+            flex: 1;
+            max-width: 35%; /* Adjusted width for form container */
+            padding: 20px;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa); /* Gradient background for form container */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-left: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #343a40; /* Darker text color */
+        }
+        .form-container input {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <h1>Unlock Chennai's temperature Insights with Our Machine Learning Model</h1>
+            <p>Forecasting Chennai's average temperature, this application offers accurate weather predictions.</p>
+        </div>
+        <div class="container">
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='chennaiImg.jpg') }}" alt="Temperature forecast for Chennai">
+            </div>
+            <div class="form-container">
+                <form action="{{ url_for('Forecast') }}" method="post">
+                    <label for="EnterDate">Select a start date:</label>
+                    <input type="date" id="EnterDate" name="EnterDate" required>
+                    <label for="NumDays">Number of days to forecast:</label>
+                    <input type="number" id="NumDays" name="NumDays" min="1" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
